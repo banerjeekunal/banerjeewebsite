@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery by Banerjee's</title>
+    <style>
+        /* 
+           Theme colors extracted from the menu images:
+           Background: Warm pale yellow/cream (#FFF9E6)
+           Text/Headers: Deep Maroon (#7A1B1B)
+           Accents/Borders: Teal Green (#006D77)
+        */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4ece1; /* Outer background */
+            color: #333;
+        }
+
+        .menu-wrapper {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #FFF9E6; /* Menu paper color */
+            padding: 40px;
+            /* Creating the intricate double border look from the menu */
+            border: 10px solid #7A1B1B;
+            outline: 4px solid #006D77;
+            outline-offset: -16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #7A1B1B;
+        }
+        
+        .logo-box {
+            display: inline-flex; 
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 340px;  
+            height: 340px; 
+            border: 3px double #7A1B1B; 
+            border-radius: 50%; 
+            background-color: #fffaf0;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .logo-title {
+            font-size: 3.8rem; 
+            color: #333; 
+            margin: 0; 
+            font-family: 'Brush Script MT', 'cursive', 'Georgia', serif; 
+            font-weight: normal; 
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+        
+        .logo-subtitle {
+            font-size: 1.3rem; 
+            color: #7A1B1B; 
+            font-family: 'Arial', sans-serif; 
+            text-transform: uppercase; 
+            font-weight: bold; 
+            letter-spacing: 4px; 
+            margin-top: 5px; 
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .logo-est {
+            font-size: 0.85rem; 
+            color: #555; 
+            font-family: 'Arial', sans-serif; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            border-top: 1px solid #999; 
+            padding-top: 8px; 
+            text-align: center;
+        }
+
+        .menu-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #7A1B1B;
+            margin-bottom: 25px;
+            position: relative;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: " ❦ ";
+            color: #006D77;
+            font-size: 1.5rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 40px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            .menu-wrapper {
+                margin: 10px;
+                padding: 20px;
+                border: 5px solid #7A1B1B;
+                outline-offset: -8px;
+            }
+            .logo-box {
+                width: 280px;
+                height: 280px;
+            }
+            .logo-title {
+                font-size: 3rem;
+            }
+            .logo-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .item-name {
+            flex-shrink: 0;
+            padding-right: 10px;
+        }
+
+        .item-dots {
+            flex-grow: 1;
+            border-bottom: 2px dotted #999;
+            margin: 0 5px;
+            position: relative;
+            top: -4px;
+        }
+
+        .item-price {
+            flex-shrink: 0;
+            padding-left: 10px;
+            color: #7A1B1B;
+        }
+        
+        /* TWO COLUMN BOTTOM SECTION */
+        .bottom-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 50px auto 20px;
+            justify-content: center;
+        }
+        
+        .info-card {
+            flex: 1;
+            min-width: 280px; 
+            padding: 25px; 
+            border: 2px solid #7A1B1B; 
+            border-radius: 8px; 
+            background-color: #fffaf0; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .info-card h2 {
+            color: #7A1B1B; 
+            font-size: 1.5rem; 
+            margin-top: 0; 
+            margin-bottom: 20px; 
+            text-transform: uppercase; 
+            font-weight: bold; 
+            letter-spacing: 1px;
+        }
+        
+        .contact-info {
+            font-size: 1.2rem; 
+            color: #333; 
+            margin-bottom: 15px;
+        }
+        
+        .contact-info a {
+            color: #006D77; 
+            text-decoration: none; 
+            font-weight: bold;
+        }
+        
+        .map-description {
+            color: #333; 
+            font-size: 1.1rem; 
+            line-height: 1.5; 
+            margin-bottom: 20px;
+        }
+        
+        .map-btn {
+            display: inline-block; 
+            background-color: #006D77; 
+            color: white; 
+            padding: 12px 20px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            font-family: 'Arial', sans-serif; 
+            letter-spacing: 1px;
+            transition: background-color 0.2s;
+        }
+        
+        .map-btn:hover {
+            background-color: #004d55;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #7A1B1B;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-wrapper">
+        <header>
+            <div class="logo-box">
+                <h1 class="logo-title">Banerjee's</h1>
+                <div class="logo-subtitle">Food Station</div>
+                <div class="logo-est">EST. 2026 | KOLKATA</div>
+            </div>
+        </header>
+
+        <!-- VEG STARTERS -->
+        <div class="menu-section">
+            <h2 class="section-title">Veg Starter (6 Pcs)</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Chilli Baby Corn</span><div class="item-dots"></div><span class="item-price">179/-</span></div>
+                <div class="menu-item"><span class="item-name">Crispy Chilli Potato (Small)</span><div class="item-dots"></div><span class="item-price">139/-</span></div>
+                <div class="menu-item"><span class="item-name">Crispy Chilli Potato (Large)</span><div class="item-dots"></div><span class="item-price">159/-</span></div>
+                <div class="menu-item"><span class="item-name">Dry Chilli Paneer</span><div class="item-dots"></div><span class="item-price">229/-</span></div>
+                <div class="menu-item"><span class="item-name">French Fries (Small)</span><div class="item-dots"></div><span class="item-price">119/-</span></div>
+                <div class="menu-item"><span class="item-name">French Fries (Large)</span><div class="item-dots"></div><span class="item-price">139/-</span></div>
+                <div class="menu-item"><span class="item-name">Paneer Pakoda</span><div class="item-dots"></div><span class="item-price">219/-</span></div>
+            </div>
+        </div>
+
+        <!-- FISH STARTERS -->
+        <div class="menu-section">
+            <h2 class="section-title">Starter (Fish) (6 Pcs)</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Fish Fry (1 Pc)</span><div class="item-dots"></div><span class="item-price">219/-</span></div>
+                <div class="menu-item"><span class="item-name">Fish & Chips (2 Pc)</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+                <div class="menu-item"><span class="item-name">Fish Finger</span><div class="item-dots"></div><span class="item-price">319/-</span></div>
+                <div class="menu-item"><span class="item-name">Fish Amritsari (2 Pc)</span><div class="item-dots"></div><span class="item-price">219/-</span></div>
+                <div class="menu-item"><span class="item-name">Dry Chilli Fish</span><div class="item-dots"></div><span class="item-price">249/-</span></div>
+                <div class="menu-item"><span class="item-name">Salt & Pepper Fish</span><div class="item-dots"></div><span class="item-price">229/-</span></div>
+                <div class="menu-item"><span class="item-name">Pan Fried Fish</span><div class="item-dots"></div><span class="item-price">249/-</span></div>
+            </div>
+        </div>
+
+        <!-- CHICKEN STARTERS -->
+        <div class="menu-section">
+            <h2 class="section-title">Starter (Chicken) (6 Pcs)</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Chicken Lollipop</span><div class="item-dots"></div><span class="item-price">229/-</span></div>
+                <div class="menu-item"><span class="item-name">Drums of Heaven</span><div class="item-dots"></div><span class="item-price">269/-</span></div>
+                <div class="menu-item"><span class="item-name">Crispy Chicken Popcorn (Small)</span><div class="item-dots"></div><span class="item-price">119/-</span></div>
+                <div class="menu-item"><span class="item-name">Crispy Chicken Popcorn (Large)</span><div class="item-dots"></div><span class="item-price">159/-</span></div>
+                <div class="menu-item"><span class="item-name">Salt & Pepper Chicken</span><div class="item-dots"></div><span class="item-price">199/-</span></div>
+                <div class="menu-item"><span class="item-name">Dry Chilli Chicken</span><div class="item-dots"></div><span class="item-price">209/-</span></div>
+                <div class="menu-item"><span class="item-name">Tangra Style Dry Chilli Chicken</span><div class="item-dots"></div><span class="item-price">189/-</span></div>
+                <div class="menu-item"><span class="item-name">Dry Garlic Chicken</span><div class="item-dots"></div><span class="item-price">199/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Nuggets</span><div class="item-dots"></div><span class="item-price">149/-</span></div>
+            </div>
+        </div>
+
+        <!-- PRAWN STARTERS -->
+        <div class="menu-section">
+            <h2 class="section-title">Prawn (6 Pcs)</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Golden Fried Prawn</span><div class="item-dots"></div><span class="item-price">249/-</span></div>
+                <div class="menu-item"><span class="item-name">Butter Garlic Prawn</span><div class="item-dots"></div><span class="item-price">249/-</span></div>
+                <div class="menu-item"><span class="item-name">Prawn In Papar Bowl</span><div class="item-dots"></div><span class="item-price">289/-</span></div>
+                <div class="menu-item"><span class="item-name">Crispy Sweet & Sour Pineapple Prawn</span><div class="item-dots"></div><span class="item-price">279/-</span></div>
+            </div>
+        </div>
+
+        <!-- KEBABS -->
+        <div class="menu-section">
+            <h2 class="section-title">Kebabs (6 Pcs)</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Pahadi Tikka Kebab</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+                <div class="menu-item"><span class="item-name">Murg Malai Tikka Kebab</span><div class="item-dots"></div><span class="item-price">269/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Tikka</span><div class="item-dots"></div><span class="item-price">279/-</span></div>
+                <div class="menu-item"><span class="item-name">Tengri Kebab (4 Pc)</span><div class="item-dots"></div><span class="item-price">329/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Tandoori Half (2 Pc)</span><div class="item-dots"></div><span class="item-price">389/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Tandoori Full (4 Pc)</span><div class="item-dots"></div><span class="item-price">499/-</span></div>
+                <div class="menu-item"><span class="item-name">Fish Tikka Kebab</span><div class="item-dots"></div><span class="item-price">299/-</span></div>
+                <div class="menu-item"><span class="item-name">Paneer Tikka Kebab</span><div class="item-dots"></div><span class="item-price">309/-</span></div>
+            </div>
+        </div>
+
+        <!-- SANDWICHES -->
+        <div class="menu-section">
+            <h2 class="section-title">Sandwiches</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Grilled Cheese Chicken Sandwich</span><div class="item-dots"></div><span class="item-price">139/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Tikka Sandwich</span><div class="item-dots"></div><span class="item-price">159/-</span></div>
+                <div class="menu-item"><span class="item-name">Veg Loaded Sandwich</span><div class="item-dots"></div><span class="item-price">139/-</span></div>
+                <div class="menu-item"><span class="item-name">Cheese Chilli Toast Sandwich</span><div class="item-dots"></div><span class="item-price">129/-</span></div>
+                <div class="menu-item"><span class="item-name">Paneer Tikka Sandwich</span><div class="item-dots"></div><span class="item-price">169/-</span></div>
+            </div>
+        </div>
+
+        <!-- MOMOS -->
+        <div class="menu-section">
+            <h2 class="section-title">Momo (6 Pcs)</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Veg Steam Momo</span><div class="item-dots"></div><span class="item-price">119/-</span></div>
+                <div class="menu-item"><span class="item-name">Veg Fried Momo</span><div class="item-dots"></div><span class="item-price">129/-</span></div>
+                <div class="menu-item"><span class="item-name">Veg Pan Fried Momo</span><div class="item-dots"></div><span class="item-price">149/-</span></div>
+                <div class="menu-item"><span class="item-name">Paneer Steam Momo</span><div class="item-dots"></div><span class="item-price">159/-</span></div>
+                <div class="menu-item"><span class="item-name">Paneer Fried Momo</span><div class="item-dots"></div><span class="item-price">179/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Steam Momo</span><div class="item-dots"></div><span class="item-price">119/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Cheese Steam Momo</span><div class="item-dots"></div><span class="item-price">159/-</span></div>
+                <div class="menu-item"><span class="item-name">Fried Chicken Momo</span><div class="item-dots"></div><span class="item-price">129/-</span></div>
+                <div class="menu-item"><span class="item-name">Fried Chicken Cheese Momo</span><div class="item-dots"></div><span class="item-price">169/-</span></div>
+                <div class="menu-item"><span class="item-name">Pan Fried Chicken Momo</span><div class="item-dots"></div><span class="item-price">169/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Tandoori Momo</span><div class="item-dots"></div><span class="item-price">149/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Afgani Momo</span><div class="item-dots"></div><span class="item-price">149/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Soup Wonton</span><div class="item-dots"></div><span class="item-price">159/-</span></div>
+                <div class="menu-item"><span class="item-name">Fried Chicken Wonton</span><div class="item-dots"></div><span class="item-price">139/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Cheese Fried Wonton</span><div class="item-dots"></div><span class="item-price">179/-</span></div>
+            </div>
+        </div>
+        
+        <!-- MAIN COURSE (VEG) -->
+        <div class="menu-section">
+            <h2 class="section-title">Main Course (Veg) (6 Pcs)</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Veg Manchurian</span><div class="item-dots"></div><span class="item-price">219/-</span></div>
+                <div class="menu-item"><span class="item-name">Schezwan Paneer</span><div class="item-dots"></div><span class="item-price">229/-</span></div>
+                <div class="menu-item"><span class="item-name">Chilli Paneer</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+                <div class="menu-item"><span class="item-name">Hot Garlic Paneer</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+                <div class="menu-item"><span class="item-name">Kung Pao Paneer</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+            </div>
+        </div>
+
+        <!-- MAIN COURSE (FISH) -->
+        <div class="menu-section">
+            <h2 class="section-title">Main Course (Fish) (6 Pcs)</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Chilli Fish</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+                <div class="menu-item"><span class="item-name">Garlic Fish</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+                <div class="menu-item"><span class="item-name">Thai Basil Fish</span><div class="item-dots"></div><span class="item-price">259/-</span></div>
+                <div class="menu-item"><span class="item-name">Hot Garlic Fish</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+                <div class="menu-item"><span class="item-name">Kung Pao Fish</span><div class="item-dots"></div><span class="item-price">259/-</span></div>
+                <div class="menu-item"><span class="item-name">Mongolian Fish</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+                <div class="menu-item"><span class="item-name">Butter Garlic Coriander Fish</span><div class="item-dots"></div><span class="item-price">259/-</span></div>
+            </div>
+        </div>
+
+        <!-- MAIN COURSE (CHICKEN) -->
+        <div class="menu-section">
+            <h2 class="section-title">Main Course (Chicken) (6 Pcs)</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Chilli Chicken</span><div class="item-dots"></div><span class="item-price">199/-</span></div>
+                <div class="menu-item"><span class="item-name">White Garlic Chicken</span><div class="item-dots"></div><span class="item-price">199/-</span></div>
+                <div class="menu-item"><span class="item-name">Mongolian Chicken</span><div class="item-dots"></div><span class="item-price">199/-</span></div>
+                <div class="menu-item"><span class="item-name">Hot Garlic Chicken</span><div class="item-dots"></div><span class="item-price">199/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Manchurian</span><div class="item-dots"></div><span class="item-price">199/-</span></div>
+                <div class="menu-item"><span class="item-name">Kung Pao Chicken</span><div class="item-dots"></div><span class="item-price">219/-</span></div>
+                <div class="menu-item"><span class="item-name">Sweet & Sour Chicken</span><div class="item-dots"></div><span class="item-price">199/-</span></div>
+                <div class="menu-item"><span class="item-name">Honey Pepper Chicken</span><div class="item-dots"></div><span class="item-price">249/-</span></div>
+                <div class="menu-item"><span class="item-name">Thai Basil Chicken</span><div class="item-dots"></div><span class="item-price">219/-</span></div>
+            </div>
+        </div>
+
+        <!-- RICE -->
+        <div class="menu-section">
+            <h2 class="section-title">Rice</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Veg Fried Rice</span><div class="item-dots"></div><span class="item-price">159/-</span></div>
+                <div class="menu-item"><span class="item-name">Egg Fried Rice</span><div class="item-dots"></div><span class="item-price">169/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Fried Rice</span><div class="item-dots"></div><span class="item-price">189/-</span></div>
+                <div class="menu-item"><span class="item-name">Mixed Fried Rice</span><div class="item-dots"></div><span class="item-price">219/-</span></div>
+                <div class="menu-item"><span class="item-name">Veg Schezwan Fried Rice</span><div class="item-dots"></div><span class="item-price">179/-</span></div>
+                <div class="menu-item"><span class="item-name">Egg Schezwan Fried Rice</span><div class="item-dots"></div><span class="item-price">189/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Schezwan Fried Rice</span><div class="item-dots"></div><span class="item-price">209/-</span></div>
+                <div class="menu-item"><span class="item-name">Mixed Schezwan Fried Rice</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+                <div class="menu-item"><span class="item-name">Burnt Garlic Fried Rice</span><div class="item-dots"></div><span class="item-price">159/-</span></div>
+            </div>
+        </div>
+
+        <!-- NOODLES -->
+        <div class="menu-section">
+            <h2 class="section-title">Noodles</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Veg Noodles</span><div class="item-dots"></div><span class="item-price">159/-</span></div>
+                <div class="menu-item"><span class="item-name">Egg Noodles</span><div class="item-dots"></div><span class="item-price">169/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Noodles</span><div class="item-dots"></div><span class="item-price">189/-</span></div>
+                <div class="menu-item"><span class="item-name">Mixed Noodles</span><div class="item-dots"></div><span class="item-price">219/-</span></div>
+                <div class="menu-item"><span class="item-name">Pan Fried Veg Noodles</span><div class="item-dots"></div><span class="item-price">169/-</span></div>
+                <div class="menu-item"><span class="item-name">Pan Fried Chicken Noodles</span><div class="item-dots"></div><span class="item-price">199/-</span></div>
+                <div class="menu-item"><span class="item-name">Pan Fried Mixed Noodles</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+                <div class="menu-item"><span class="item-name">Egg Schezwan Noodles</span><div class="item-dots"></div><span class="item-price">189/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Schezwan Noodles</span><div class="item-dots"></div><span class="item-price">209/-</span></div>
+                <div class="menu-item"><span class="item-name">Mixed Schezwan Noodles</span><div class="item-dots"></div><span class="item-price">239/-</span></div>
+                <div class="menu-item"><span class="item-name">Veg Gravy Noodles</span><div class="item-dots"></div><span class="item-price">169/-</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Gravy Noodles</span><div class="item-dots"></div><span class="item-price">189/-</span></div>
+                <div class="menu-item"><span class="item-name">Mixed Gravy Noodles</span><div class="item-dots"></div><span class="item-price">229/-</span></div>
+            </div>
+        </div>
+
+        <!-- BEVERAGES (MOCKTAILS, SHAKES, TEA, COFFEE) -->
+        <div class="menu-section">
+            <h2 class="section-title">Refreshments</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Belgian Brownie Boom</span><div class="item-dots"></div><span class="item-price">159/-</span></div>
+                <div class="menu-item"><span class="item-name">Oreo Shake</span><div class="item-dots"></div><span class="item-price">129/-</span></div>
+                <div class="menu-item"><span class="item-name">Kit Kat Shake</span><div class="item-dots"></div><span class="item-price">169/-</span></div>
+                <div class="menu-item"><span class="item-name">Chocolate Shake</span><div class="item-dots"></div><span class="item-price">149/-</span></div>
+                <div class="menu-item"><span class="item-name">Mango Mastani</span><div class="item-dots"></div><span class="item-price">149/-</span></div>
+                <div class="menu-item"><span class="item-name">Strawberry Shake</span><div class="item-dots"></div><span class="item-price">149/-</span></div>
+                <div class="menu-item"><span class="item-name">Cold Coffee</span><div class="item-dots"></div><span class="item-price">119/-</span></div>
+                <div class="menu-item"><span class="item-name">Virgin Mojito</span><div class="item-dots"></div><span class="item-price">99/-</span></div>
+                <div class="menu-item"><span class="item-name">Fresh Lime Soda</span><div class="item-dots"></div><span class="item-price">79/-</span></div>
+                <div class="menu-item"><span class="item-name">Black Currant</span><div class="item-dots"></div><span class="item-price">99/-</span></div>
+                <div class="menu-item"><span class="item-name">Blue Lagoon</span><div class="item-dots"></div><span class="item-price">99/-</span></div>
+                <div class="menu-item"><span class="item-name">Kala Khatta</span><div class="item-dots"></div><span class="item-price">99/-</span></div>
+                <div class="menu-item"><span class="item-name">Masala Thums Up</span><div class="item-dots"></div><span class="item-price">79/-</span></div>
+                <div class="menu-item"><span class="item-name">Tea (Small)</span><div class="item-dots"></div><span class="item-price">20/-</span></div>
+                <div class="menu-item"><span class="item-name">Tea (Large)</span><div class="item-dots"></div><span class="item-price">30/-</span></div>
+                <div class="menu-item"><span class="item-name">Masala Lemon Tea</span><div class="item-dots"></div><span class="item-price">20/-</span></div>
+                <div class="menu-item"><span class="item-name">Milk Coffee</span><div class="item-dots"></div><span class="item-price">30/-</span></div>
+                <div class="menu-item"><span class="item-name">Black Coffee</span><div class="item-dots"></div><span class="item-price">20/-</span></div>
+                <div class="menu-item"><span class="item-name">Butter Coffee</span><div class="item-dots"></div><span class="item-price">35/-</span></div>
+            </div>
+        </div>
+
+        <!-- TWO-COLUMN BOTTOM SECTION -->
+        <div class="bottom-section">
+            
+            <!-- CONTACT CARD (LEFT) -->
+            <div class="info-card">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <strong>Mobile:</strong> <br>
+                    <a href="tel:+917439116573">+91 74391 16573</a>
+                </div>
+                <div class="contact-info" style="font-size: 1.1rem; margin-top: 10px;">
+                    <strong>Email:</strong> <br>
+                    <a href="mailto:kunalbanerjee05082002@gmail.com">kunalbanerjee05082002@gmail.com</a>
+                </div>
+            </div>
+
+            <!-- GOOGLE MAPS CARD (RIGHT) -->
+            <div class="info-card">
+                <h2>Find Us Here</h2>
+                <p class="map-description">
+                    Visit our takeaway shop in Kolkata for the best Indo-Chinese flavors in town! Click the link below to get exact directions via Google Maps.
+                </p>
+                <div>
+                    <a href="https://share.google/uHFiEWc8HvKDvnANH" target="_blank" class="map-btn">
+                        📍 Open in Google Maps
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Gallery by Banerjee's.</p>
+            <p>Bringing you the authentic taste of Kolkata.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
